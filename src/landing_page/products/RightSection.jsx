@@ -13,7 +13,7 @@ function RightSection(
           <h1>{productName}</h1>
           <p>{productDesc}</p>
             <a href={learnMore} style={{ textDecoration: "none"}}>
-              Learn More <i class="fa-solid fa-arrow-right-long"></i>
+              Learn More <i className="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>
         <div className="col-2"></div>

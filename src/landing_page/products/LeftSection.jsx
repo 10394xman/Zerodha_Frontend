@@ -1,14 +1,21 @@
-import React from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 function LeftSection({
   imageUrl,
   productName,
   productDesc,
-  TryDemo,
   learnMore,
   googlePlay,
   appStore,
 }) {
+  const { user, login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    await login();
+    navigate("/auth");
+  };
+
   return (
     <div className="container mt-5">
       <div className="row">
@@ -20,14 +27,23 @@ function LeftSection({
           <h1>{productName}</h1>
           <p>{productDesc}</p>
           <div className="row">
-            <a href={TryDemo} style={{ textDecoration: "none" }}>
-              Try Demo <i class="fa-solid fa-arrow-right-long"></i>
+            {user ? (
+              <Link to="/dashboard" className="btn btn-primary">
+                Try Demo
+              </Link>
+            ) : (
+              <button onClick={handleLogin} className="btn btn-link nav-link">
+                Try Demo
+              </button>
+            )}
+            <a href="/auth?redirect=5174" style={{ textDecoration: "none" }}>
+              Try Demo <i className="fa-solid fa-arrow-right-long"></i>
             </a>
             <a
               href={learnMore}
               style={{ textDecoration: "none", marginLeft: "2rem" }}
             >
-              Learn More <i class="fa-solid fa-arrow-right-long"></i>
+              Learn More <i className="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
           <div className="row mt-3">
