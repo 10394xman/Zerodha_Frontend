@@ -13,7 +13,6 @@ const AuthPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
-  const redirectPath = params.get("redirect") || "/"; // default to home
   const { login, signup } = useAuth();
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,7 +30,7 @@ const AuthPage = () => {
       }
       if (result.success) {
         setFlash(isLogin ? "Login successful!" : "Signup successful!");
-        setTimeout(() => navigate(redirectPath), 1200);
+        setTimeout(() => navigate("/", { replace: true }), 1200);
       } else {
         setError(result.message || "Authentication failed");
       }

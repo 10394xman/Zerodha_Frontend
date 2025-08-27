@@ -26,7 +26,7 @@ body {
   margin: 0;
   /* display: flex; */
   /* place-items: center; */
-  min-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
 }
 
@@ -66,10 +66,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-.nav-link{
+.nav-link {
   margin-left: 2.5rem;
   opacity: 0.7;
 }
 #support-hero {
   background-color: #f5f5f5;
+}
+.image{
+  width:100%;
+  height: auto;
 }

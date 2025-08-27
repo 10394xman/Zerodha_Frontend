@@ -12,6 +12,7 @@ import Footer from "./landing_page/Footer";
 import AuthPage from "./landing_page/AuthPage";
 import { AuthProvider } from "./landing_page/AuthContext";
 import ProtectedRoute from "./landing_page/ProtectedRoute";
+//import Dashboard from "../../dashboard/components/Dashboard";
 
 
 function App() {
@@ -62,6 +63,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       {!hideNavFooter && <Footer />}

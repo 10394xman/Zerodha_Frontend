@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../AuthContext";
 function LeftSection({
   imageUrl,
   productName,
@@ -8,12 +8,15 @@ function LeftSection({
   googlePlay,
   appStore,
 }) {
-  const { user, login } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    await login();
-    navigate("/auth");
+  const handleTryDemo = () => {
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      navigate("/auth");
+    }
   };
 
   return (
@@ -27,18 +30,9 @@ function LeftSection({
           <h1>{productName}</h1>
           <p>{productDesc}</p>
           <div className="row">
-            {user ? (
-              <Link to="/dashboard" className="btn btn-primary">
-                Try Demo
-              </Link>
-            ) : (
-              <button onClick={handleLogin} className="btn btn-link nav-link">
-                Try Demo
-              </button>
-            )}
-            <a href="/auth?redirect=5174" style={{ textDecoration: "none" }}>
-              Try Demo <i className="fa-solid fa-arrow-right-long"></i>
-            </a>
+            <button onClick={handleTryDemo} className="btn btn-primary">
+              Try Demo
+            </button>
             <a
               href={learnMore}
               style={{ textDecoration: "none", marginLeft: "2rem" }}
