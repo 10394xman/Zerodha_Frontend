@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   // Check auth status on mount
   useEffect(() => {
-    axios.get("http://localhost:8000/api/verify", { withCredentials: true })
+    axios.get("https://zerodha-backend-hgfc.onrender.com/api/verify", { withCredentials: true })
       .then(res => {
         if (res.data.success && res.data.user) {
           setUser(res.data.user);
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const res = await axios.post("http://localhost:8000/api/login", { email, password }, { withCredentials: true });
+    const res = await axios.post("https://zerodha-backend-hgfc.onrender.com/api/login", { email, password }, { withCredentials: true });
     if (res.data.success && res.data.user) {
       setUser(res.data.user);
       return { success: true };
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signup = async (email, password, username) => {
-    const res = await axios.post("http://localhost:8000/api/signup", { email, password, username }, { withCredentials: true });
+    const res = await axios.post("https://zerodha-backend-hgfc.onrender.com/api/signup", { email, password, username }, { withCredentials: true });
     if (res.data.success && res.data.user) {
       setUser(res.data.user);
       return { success: true };
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:8000/api/logout", {}, { withCredentials: true });
+    await axios.post("https://zerodha-backend-hgfc.onrender.com/api/logout", {}, { withCredentials: true });
     setUser(null);
   };
 
