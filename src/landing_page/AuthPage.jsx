@@ -45,7 +45,7 @@ const AuthPage = () => {
     setError(""); setFlash("");
     try {
       // This can be moved to context if you want full centralization
-      const res = await fetch("http://localhost:8000/api/forgot-password", {
+      const res = await fetch("https://zerodha-backend-hgfc.onrender.com/api/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(forgotForm),
